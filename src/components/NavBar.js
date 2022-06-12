@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "./Logo";
+import Logo from "./commons/Logo";
 import { NavLink as Link } from "react-router-dom";
 import BookButton from "./commons/BookButton";
+import { FaBars } from "react-icons/fa";
 
-const NavBar = () => {
+const NavBar = ({ toggle }) => {
   return (
     <NavBarContainer>
       <NavLogoContainer>
@@ -12,6 +13,9 @@ const NavBar = () => {
           <Logo />
         </NavLink>
       </NavLogoContainer>
+      <MobileIcon onClick={toggle}>
+        <Bars />
+      </MobileIcon>
 
       <NavOptionsContainer>
         <NavLink to="/rooms">Rooms</NavLink>
@@ -49,11 +53,11 @@ const NavBarContainer = styled.header`
 
 const NavLogoContainer = styled.div`
   ${({ theme }) => `
-  margin-left: ${theme.spacing.larger};
+    margin-left: ${theme.spacing.larger};
 
-  @media(max-width: ${theme.breakpoints.mobile}){
-    margin-left: ${theme.spacing.extraSmall};
-  } 
+    @media(max-width: ${theme.breakpoints.mobile}){
+      margin-left: ${theme.spacing.small};
+    } 
   `}
 `;
 
@@ -64,6 +68,10 @@ const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
   font-weight: 700;
+
+  &.active {
+    color: #D07F08;
+  }
 
   ${({ theme }) => `
      font-family: ${theme.fontFamily.main};
@@ -83,6 +91,12 @@ const NavOptionsContainer = styled.div`
   flex-grow: 0.25;
   justify-content: space-between;
   align-items: center;
+
+  ${({ theme }) => `
+    @media(max-width: ${theme.breakpoints.tablet}){
+      display: none;
+    }
+  `}
 `;
 
 const LanguageOptionsContainer = styled.div`
@@ -91,8 +105,12 @@ const LanguageOptionsContainer = styled.div`
   align-items: center;
 
   ${({ theme }) => `
-        margin-right: ${theme.spacing.larger};
-    `}
+    margin-right: ${theme.spacing.larger};
+
+    @media(max-width: ${theme.breakpoints.tablet}){
+      display: none;
+    }
+  `}
 `;
 
 const CroatianFlagImageContainer = styled.div``;
@@ -105,3 +123,22 @@ const FlagImage = styled.img`
   width: 40px;
   cursor: pointer;
 `;
+
+const MobileIcon = styled.div`
+  display: none;
+
+  ${({ theme }) => `
+    @media(max-width: ${theme.breakpoints.tablet}){
+      display: flex;
+      margin-right: ${theme.spacing.larger};
+      cursor: pointer;
+      font-size: ${theme.fontSize.large};
+      color: ${theme.color.main.black};
+    } 
+    @media(max-width: ${theme.breakpoints.mobile}){
+      margin-right: ${theme.spacing.small};
+    } 
+  `}
+`;
+
+const Bars = styled(FaBars)``;
