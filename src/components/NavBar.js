@@ -4,8 +4,15 @@ import Logo from "./commons/Logo";
 import { NavLink as Link } from "react-router-dom";
 import BookButton from "./commons/BookButton";
 import { FaBars } from "react-icons/fa";
+import LanguageOptions from "./commons/LanguageOptions";
+import { useMedia } from "use-media";
+import { theme } from "../themes/defaultTheme";
 
-const NavBar = ({ toggle }) => {
+const Navbar = ({ toggle }) => {
+  const isDesktopScreen = useMedia({
+    minWidth: theme.breakpoints.tablet,
+  });
+
   return (
     <NavBarContainer>
       <NavLogoContainer>
@@ -26,19 +33,12 @@ const NavBar = ({ toggle }) => {
         </NavLink>
       </NavOptionsContainer>
 
-      <LanguageOptionsContainer>
-        <CroatianFlagImageContainer>
-          <FlagImage src="/images/cro-flag.png" alt="hr-img" />
-        </CroatianFlagImageContainer>
-        <EnglishFlagImageContainer>
-          <FlagImage src="/images/eng-flag.png" alt="eng-img" />
-        </EnglishFlagImageContainer>
-      </LanguageOptionsContainer>
+      {isDesktopScreen && <LanguageOptions/>}
     </NavBarContainer>
   );
 };
 
-export default NavBar;
+export default Navbar;
 
 const NavBarContainer = styled.header`
   height: 60px;
@@ -97,31 +97,6 @@ const NavOptionsContainer = styled.div`
       display: none;
     }
   `}
-`;
-
-const LanguageOptionsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ${({ theme }) => `
-    margin-right: ${theme.spacing.larger};
-
-    @media(max-width: ${theme.breakpoints.tablet}){
-      display: none;
-    }
-  `}
-`;
-
-const CroatianFlagImageContainer = styled.div``;
-
-const EnglishFlagImageContainer = styled.div`
-  padding-left: 10px;
-`;
-
-const FlagImage = styled.img`
-  width: 40px;
-  cursor: pointer;
 `;
 
 const MobileIcon = styled.div`
