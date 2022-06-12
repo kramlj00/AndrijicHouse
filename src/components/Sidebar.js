@@ -5,14 +5,9 @@ import { NavLink as Link } from "react-router-dom";
 import BookButton from "./commons/BookButton";
 import LanguageOptions from "./commons/LanguageOptions";
 import Logo from "./commons/Logo";
+import { navLinks } from "../helpers/navLinks";
 
 const Sidebar = ({ toggle, isOpen }) => {
-  const sidebarLinks = [
-    { label: "Rooms", path: "/rooms" },
-    { label: "Exterior", path: "/exterior" },
-    { label: "Contact us", path: "/contact_us", private: true },
-  ];
-
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>
@@ -23,13 +18,13 @@ const Sidebar = ({ toggle, isOpen }) => {
         <Logo />
       </SidebarLink>
       </LogoContainer>
-          {sidebarLinks.map((sidebarLink) => (
+          {navLinks.map((navLink) => (
             <SidebarLink
-              to={sidebarLink.path}
-              key={sidebarLink.path}
+              to={navLink.path}
+              key={navLink.path}
               onClick={toggle}
             >
-              {sidebarLink.label}
+              {navLink.label}
             </SidebarLink>
           ))}
             <SidebarLink to="/rooms">

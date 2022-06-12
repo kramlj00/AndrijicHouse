@@ -7,6 +7,7 @@ import { FaBars } from "react-icons/fa";
 import LanguageOptions from "./commons/LanguageOptions";
 import { useMedia } from "use-media";
 import { theme } from "../themes/defaultTheme";
+import { navLinks } from "../helpers/navLinks";
 
 const Navbar = ({ toggle }) => {
   const isDesktopScreen = useMedia({
@@ -25,15 +26,17 @@ const Navbar = ({ toggle }) => {
       </MobileIcon>
 
       <NavOptionsContainer>
-        <NavLink to="/rooms">Rooms</NavLink>
-        <NavLink to="/exterior">Exterior</NavLink>
-        <NavLink to="/contact_us">Contact us</NavLink>
+        {navLinks.map((navLink) => (
+          <NavLink to={navLink.path} key={navLink.path}>
+            {navLink.label}
+          </NavLink>
+        ))}
         <NavLink to="/rooms">
-          <BookButton/>
+          <BookButton />
         </NavLink>
       </NavOptionsContainer>
 
-      {isDesktopScreen && <LanguageOptions/>}
+      {isDesktopScreen && <LanguageOptions />}
     </NavBarContainer>
   );
 };
@@ -70,7 +73,7 @@ const NavLink = styled(Link)`
   font-weight: 700;
 
   &.active {
-    color: #D07F08;
+    color: #d07f08;
   }
 
   ${({ theme }) => `
