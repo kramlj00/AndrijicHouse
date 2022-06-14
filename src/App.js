@@ -4,6 +4,7 @@ import { theme } from "./themes/defaultTheme";
 import { ThemeProvider } from "styled-components";
 import "./App.css"
 import ToggleBars from "./helpers/toggleBars";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage/>} exact />
         </Routes>
+        <Footer/>
       </Router>
     </ThemeProvider>
   );

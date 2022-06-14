@@ -15,6 +15,6 @@ const LogoTitle = styled.div`
   ${({ theme }) => `
    font-family: ${theme.fontFamily.secondary};
    color: ${theme.color.main.gold};
-   font-size: ${theme.fontSize.large};
+   font-size: ${theme.fontSize.extraLarge};
 `}
 `;
