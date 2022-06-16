@@ -6,6 +6,7 @@ import "./App.css"
 import ToggleBars from "./helpers/toggleBars";
 import Footer from "./components/Footer";
 import RoomsPage from "./pages/roomsPage";
+import ExteriorPage from "./pages/exteriorPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage/>} exact />
             <Route path="/rooms" element={<RoomsPage/>} exact />
+            <Route path="/exterior" element={<ExteriorPage/>} exact />
           </Routes>
         </PageContentContainer>
         <Footer/>
