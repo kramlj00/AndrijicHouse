@@ -25,5 +25,5 @@ const App = () => {
 export default App;
 
 const PageContentContainer = styled.div`
-  height: 100vh;
+  min-height: 100vh;
 `
