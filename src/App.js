@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from "styled-components";
 import "./App.css"
 import ToggleBars from "./helpers/toggleBars";
 import Footer from "./components/Footer";
+import RoomsPage from "./pages/roomsPage";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <PageContentContainer>
           <Routes>
             <Route path="/" element={<HomePage/>} exact />
+            <Route path="/rooms" element={<RoomsPage/>} exact />
           </Routes>
         </PageContentContainer>
         <Footer/>

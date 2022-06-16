@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react";
-import styled, {keyframes} from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 
-const TitleImage = () => {
+const TitleImage = ({ textPartOne, textPartTwo, imageSrc }) => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
@@ -26,12 +26,16 @@ const TitleImage = () => {
     <HomeContainer>
       <ImageContainer>
         <Image
-          src="/images/home-image.png"
-          alt="home-image"
+          src={imageSrc}
+          alt="title-image"
           isActive={isScrolling}
         />
         <TitleWrapper>
-          <Saying>Enjoy a luxury <br></br> experience</Saying>
+          <Saying>
+            {textPartOne}
+            <br></br>
+            {textPartTwo}
+          </Saying>
         </TitleWrapper>
 
         <BookNowContainer>
@@ -86,7 +90,7 @@ const BookNowHomeBtn = styled.button`
   &:hover {
     background-color: #dbae6b;
     transform: scale(1.03);
-    transition: all 0.4s ease-out; 
+    transition: all 0.4s ease-out;
   }
 
   ${({ theme }) => `
@@ -118,8 +122,8 @@ const Image = styled.img`
   object-fit: cover;
 
   ${({ theme, isActive }) => `
-    -webkit-filter: ${isActive && 'blur(3px)'};
-    transition: ${isActive && '-webkit-filter 1.5s linear'};
+    -webkit-filter: ${isActive && "blur(3px)"};
+    transition: ${isActive && "-webkit-filter 1.5s linear"};
 
     @media(max-width: ${theme.breakpoints.tablet}){
         object-position: -40px 0;

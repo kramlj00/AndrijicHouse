@@ -5,7 +5,11 @@ import HomeCard from "../components/home/HomeCard";
 const HomePage = () => {
   return (
     <>
-      <TitleImage />
+      <TitleImage
+        textPartOne="Enjoy a luxury"
+        textPartTwo="experience"
+        imageSrc="/images/home-image.png"
+      />
       <HomeCard />
     </>
   );
