@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
-import { Logo } from "./commons/Logo";
 
 function Footer() {
   const footerItems = [
