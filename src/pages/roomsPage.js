@@ -1,21 +1,20 @@
-import React, {useState} from "react";
+import React from "react";
 import Images from "../components/commons/Images";
 import TitleImage from "../components/commons/TitleImage";
-import LightBox from "react-awesome-lightbox";
 import "react-awesome-lightbox/build/style.css";
 
 const RoomsPage = () => {
-  // const [isOpen, setIsOpen] = useState(true);
   const roomsImages = [
-    {src: "/images/exterior-image.png", caption: "Image 1"},
-    {src: "/images/home-image.png", caption: "Image 2"},
-    {src: "/images/room-image.png", caption: "Image 3"},
-    {src: "/images/exterior-image.png", caption: "Image 4"},
-    {src: "/images/home-image.png", caption: "Image 5"},
-    {src: "/images/exterior-image.png", caption: "Image 6"},
-    {src: "/images/home-image.png", caption: "Image 7"},
-    {src: "/images/room-image.png", caption: "Image 8"},
+    {src: "/images/room-image.png", caption: "Image 1"},
+    {src: "/images/room2-image.jpg", caption: "Image 2"},
+    {src: "/images/room3-image.jpg", caption: "Image 3"},
+    {src: "/images/room4-image.jpg", caption: "Image 4"},
+    {src: "/images/room5-image.jpg", caption: "Image 5"},
+    {src: "/images/room6-image.jpg", caption: "Image 6"},
+    {src: "/images/room7-image.jpg", caption: "Image 7"},
+    {src: "/images/room8-image.jpg", caption: "Image 8"},
   ];
+  
   return (
     <>
       <TitleImage
