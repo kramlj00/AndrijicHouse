@@ -8,7 +8,6 @@ function Footer() {
     { label: "Exterior", path: "/exterior" },
     { label: "Book now", path: "/"  },
   ];
-  
 
   return (
     <FooterContainer>
@@ -17,7 +16,7 @@ function Footer() {
         <FooterLogo to="/">Andrijic House</FooterLogo>
         <HorizontalLine />
       </SeparatorBar>
-      <FooterItemsConatainer>
+      <FooterItemsContainer>
         <ItemContainer>
           <FooterLink to="/contact_us">
             <FooterItemTitle>Contact us</FooterItemTitle>
@@ -33,7 +32,7 @@ function Footer() {
             </FooterLink>
           </ItemContainer>
         ))}
-      </FooterItemsConatainer>
+      </FooterItemsContainer>
       <WebsiteRightsContainer>
         Andrijic House &copy; {new Date().getFullYear()} All rights reserved.
       </WebsiteRightsContainer>
@@ -52,6 +51,10 @@ const FooterContainer = styled.div`
 
   ${({ theme }) => `
     background-color: ${theme.color.main.darkGrey};
+
+    @media(max-width: ${theme.breakpoints.mobile}){
+      height: 320px;
+    }
   `}
 `;
 
@@ -60,6 +63,12 @@ const SeparatorBar = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${({ theme }) => `
+    @media(max-width: ${theme.breakpoints.mobile}){
+      margin-bottom: 20px;
+    }
+  `}
 `;
 
 const HorizontalLine = styled.div`
@@ -95,7 +104,7 @@ const FooterLogo = styled(Link)`
   `}
 `;
 
-const FooterItemsConatainer = styled.div`
+const FooterItemsContainer = styled.div`
   display: flex;
   width: 70%;
   margin: 0 auto;
@@ -106,8 +115,13 @@ const FooterItemsConatainer = styled.div`
     color: ${theme.color.main.white};
 
     @media(max-width: ${theme.breakpoints.tablet}){
+      width: 90%;
+    }
+    @media(max-width: ${theme.breakpoints.mobile}){
+      flex: 1;
       flex-direction: column;
-      flex-grow: 0.5;
+      align-items: center;
+      justify-content: space-between;
     }
   `}
 `;
@@ -116,27 +130,19 @@ const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
-
-  :nth-child(2) {
-    justify-content: space-between;
-    height: 120px;
-    ${({ theme }) => `
-      @media(max-width: ${theme.breakpoints.tablet}){
-        display: none;
-      }
-    `}
-  }
 `;
 
 const FooterItemTitle = styled.div`
-  /* text-align: center; */
-
   ${({ theme }) => `
     color: ${theme.color.main.white};
     font-size: ${theme.fontSize.mediumLarge};
 
-    @media(max-width: ${theme.breakpoints.mobile}){
+    @media(max-width: ${theme.breakpoints.tablet}){
       font-size: ${theme.fontSize.mediumLarger};
+    }
+    @media(max-width: ${theme.breakpoints.mobile}){
+      font-size: ${theme.fontSize.medium};
+      text-align: center;
     }
   `}
 `;
@@ -147,10 +153,11 @@ const FooterItemSubtitle = styled.span`
 
   ${({ theme }) => `
     color: ${theme.color.secondary.grey};
-    font-size: ${theme.fontSize.mediumLarger};
+    font-size: ${theme.fontSize.medium};
 
     @media(max-width: ${theme.breakpoints.mobile}){
-      font-size: ${theme.fontSize.medium};
+      font-size: ${theme.fontSize.mediumSmall};
+      padding-top: 10px;
     }
   `}
 `;
@@ -168,5 +175,10 @@ const WebsiteRightsContainer = styled.div`
   ${({ theme }) => `
     font-size: ${theme.fontSize.medium};
     color: ${theme.color.secondary.footerRightsGrey};
+
+    @media(max-width: ${theme.breakpoints.mobile}){
+      font-size: ${theme.fontSize.mediumSmall};
+      padding-top: 20px;
+    }
   `}
 `;
