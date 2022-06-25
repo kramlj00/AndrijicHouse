@@ -5,17 +5,17 @@ function TransitionedCardFan() {
     <div>
       <div className="cardfan">
         <img
-          src="https://pickywallpapers.com/img/2018/10/wine-bottles-widescreen-desktop-wallpaper-536-545-hd-wallpapers.jpg"
+          src="/images/room3-image.jpg"
           alt="cardfan_pic3"
           id="wine3"
         />
         <img
-          src="https://i.pinimg.com/originals/3a/e9/31/3ae931705f3fcbca12ed5b5c45d87b8b.png"
+          src="/images/exterior9-image.png"
           alt="cardfan_pic2"
           id="wine2"
         />
         <img
-          src="https://www.columbustravelmedia.com/wp-content/uploads/2017/06/72827659_ml.jpg"
+          src="/images/exterior5-image.png"
           alt="cardfan_pic1"
           id="wine1"
         />

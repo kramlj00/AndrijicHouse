@@ -6,9 +6,10 @@ import TransitionedCardFan from "./TransitionedCardFan/TransitionedCardFan";
 function HomeCard() {
   return (
     // <Slide triggerOnce={true}>
+    <>
       <CardContainer>
         <LeftSide>
-          <AboutUsTitle>Welcome!</AboutUsTitle>
+          <Title>Welcome!</Title>
           <AboutUsDescription>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. <br />{" "}
@@ -24,11 +25,46 @@ function HomeCard() {
           <TransitionedCardFan />
         </RightSide>
       </CardContainer>
+      <LocationContainer>
+        <Title>Location</Title>
+        <LocationMap src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11686.976429150827!2d16.715967!3d42.9204375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134a720c5f6330cf%3A0x810796f65a20ec98!2sAndriji%C4%87%20House!5e0!3m2!1shr!2shr!4v1613756560386!5m2!1shr!2shr"  />
+      </LocationContainer>
+    </>
     // </Slide>
   );
 }
 
 export default HomeCard;
+
+const LocationContainer = styled.div`
+  margin-top: -70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  ${({ theme }) => `
+    @media(max-width: ${theme.breakpoints.mobile}){
+      margin-top: -60px;
+    } 
+  `}
+`;
+
+const LocationMap = styled.iframe`
+  width: 80%;
+  height: 500px;
+  margin-top: 20px;
+  border: none;
+
+  ${({ theme }) => `
+    @media(max-width: ${theme.breakpoints.mobile}){
+      height: 300px;
+      margin-top: 10px;
+    } 
+    @media(max-width: ${theme.breakpoints.desktop}){
+      width: 90%;
+    } 
+  `}
+`;
 
 const CardContainer = styled.div`
   display: flex;
@@ -46,7 +82,7 @@ const CardContainer = styled.div`
     } 
   `}
 `;
-const AboutUsTitle = styled.h1`
+const Title = styled.h1`
   font-weight: normal;
   text-align: center;
 
@@ -87,10 +123,12 @@ const LeftSide = styled.div`
   margin-left: 100px;
   margin-bottom: 38px;
 
-  @media screen and (max-width: 1300px) {
-    margin-left: 0px;
-    width: 90%;
-  }
+  ${({ theme }) => `
+    @media(max-width: ${theme.breakpoints.desktop}){
+      margin-left: 0px;
+      width: 90%;
+    } 
+  `}
 `;
 
 const RightSide = styled.div`
