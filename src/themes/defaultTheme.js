@@ -10,6 +10,9 @@ export const theme = {
     secondary: {
       lightGrey: "#e8e8e8",
       footerRightsGrey: "#6c757d",
+      seeBlue: "#39677F",
+      lightBlue: "#659dba",
+      wineRed: "#b8001f",
     },
   },
   spacing: {

@@ -7,6 +7,7 @@ import ToggleBars from "./helpers/toggleBars";
 import Footer from "./components/Footer";
 import RoomsPage from "./pages/roomsPage";
 import ExteriorPage from "./pages/exteriorPage";
+import ContactPage from "./pages/contactPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/" element={<HomePage/>} exact />
             <Route path="/rooms" element={<RoomsPage/>} exact />
             <Route path="/exterior" element={<ExteriorPage/>} exact />
+            <Route path="/contact_us" element={<ContactPage/>} exact />
           </Routes>
         </PageContentContainer>
         <Footer/>

@@ -42,6 +42,15 @@ i18n
           },
           rightsFooter: "All rights reserved.",
           contactUs: "Contact us",
+          contactPage: {
+            address: "Address",
+            phoneNo: "Phone Number",
+            emailAdr: "Email Address",
+            sendEmailMsg: "Send us an email:",
+            name: "Name",
+            msg: "Message",
+            sendBtn: "Send"
+          }
         },
       },
       hr: {
@@ -74,6 +83,15 @@ i18n
           },
           rightsFooter: "Sva prava pridržana.",
           contactUs: "Kontakrirajte nas",
+          contactPage: {
+            address: "Adresa",
+            phoneNo: "Broj mobitela",
+            emailAdr: "Email adresa",
+            sendEmailMsg: "Pošaljite nam email:",
+            name: "Ime i prezime",
+            msg: "Poruka",
+            sendBtn: "Pošalji"
+          }
         },
       },
     },
