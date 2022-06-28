@@ -2,32 +2,28 @@ import React from "react";
 // import { Rotate, Zoom, Slide } from "react-awesome-reveal";
 import styled from "styled-components";
 import TransitionedCardFan from "./TransitionedCardFan/TransitionedCardFan";
+import { useTranslation, Trans } from "react-i18next";
 
 function HomeCard() {
+  const { t } = useTranslation();
+
   return (
     // <Slide triggerOnce={true}>
     <>
       <CardContainer>
         <LeftSide>
-          <Title>Welcome!</Title>
-          <AboutUsDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. <br />{" "}
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. <br />
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur.
-            <br /> Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum.
-          </AboutUsDescription>
+          <Title>
+            <Trans>{t("homeCard.title")}</Trans>
+          </Title>
+          <AboutUsDescription>{t("homeCard.description")}</AboutUsDescription>
         </LeftSide>
         <RightSide>
           <TransitionedCardFan />
         </RightSide>
       </CardContainer>
       <LocationContainer>
-        <Title>Location</Title>
-        <LocationMap src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11686.976429150827!2d16.715967!3d42.9204375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134a720c5f6330cf%3A0x810796f65a20ec98!2sAndriji%C4%87%20House!5e0!3m2!1shr!2shr!4v1613756560386!5m2!1shr!2shr"  />
+        <Title>{t("locationTitle")}</Title>
+        <LocationMap src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11686.976429150827!2d16.715967!3d42.9204375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134a720c5f6330cf%3A0x810796f65a20ec98!2sAndriji%C4%87%20House!5e0!3m2!1shr!2shr!4v1613756560386!5m2!1shr!2shr" />
       </LocationContainer>
     </>
     // </Slide>

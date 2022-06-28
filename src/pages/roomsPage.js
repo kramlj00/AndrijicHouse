@@ -2,8 +2,11 @@ import React from "react";
 import Images from "../components/commons/Images";
 import TitleImage from "../components/commons/TitleImage";
 import "react-awesome-lightbox/build/style.css";
+import { useTranslation } from "react-i18next";
 
 const RoomsPage = () => {
+  const { t } = useTranslation();
+
   const roomsImages = [
     {src: "/images/room-image.png", caption: "Image 1"},
     {src: "/images/room2-image.jpg", caption: "Image 2"},
@@ -18,8 +21,8 @@ const RoomsPage = () => {
   return (
     <>
       <TitleImage
-        textPartOne="Enjoy your dream"
-        textPartTwo="vacation"
+        textPartOne={t("imageTitle.roomsImage.partOne")}
+        textPartTwo={t("imageTitle.roomsImage.partTwo")}
         imageSrc="/images/room-image.png"
       />
       <Images imageList={roomsImages}/>

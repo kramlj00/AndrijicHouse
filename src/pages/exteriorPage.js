@@ -1,8 +1,11 @@
 import React from "react";
 import Images from "../components/commons/Images";
 import TitleImage from "../components/commons/TitleImage";
+import { useTranslation } from "react-i18next";
 
 const ExteriorPage = () => {
+  const { t } = useTranslation();
+
   const exteriorImages = [
     { src: "/images/exterior-image.png", caption: "Image 1" },
     { src: "/images/exterior2-image.png", caption: "Image 2" },
@@ -25,8 +28,8 @@ const ExteriorPage = () => {
   return (
     <>
       <TitleImage
-        textPartOne="Luxury by the"
-        textPartTwo="see"
+        textPartOne={t("imageTitle.exteriorImage.partOne")}
+        textPartTwo={t("imageTitle.exteriorImage.partTwo")}
         imageSrc="/images/exterior-image.png"
       />
       <Images imageList={exteriorImages} />

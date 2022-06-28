@@ -7,9 +7,17 @@ import { FaBars } from "react-icons/fa";
 import LanguageOptions from "./commons/LanguageOptions";
 import { useMedia } from "use-media";
 import { theme } from "../themes/defaultTheme";
-import { navLinks } from "../helpers/navLinks";
+import { useTranslation } from "react-i18next";
 
 const Navbar = ({ toggle }) => {
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { label: t("navLinks.link1"), path: "/rooms" },
+    { label: t("navLinks.link2"), path: "/exterior" },
+    { label: t("navLinks.link3"), path: "/contact_us" },
+  ];
+
   const isDesktopScreen = useMedia({
     minWidth: theme.breakpoints.tablet,
   });

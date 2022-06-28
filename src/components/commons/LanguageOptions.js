@@ -1,26 +1,45 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
+import { useTranslation, Trans } from "react-i18next";
 
 const LanguageOptions = () => {
+  const { i18n } = useTranslation();
+  const lngs = {
+    en: { nativeName: "English" },
+    hr: { nativeName: "Hrvatski" },
+  };
+
   return (
     <LanguageOptionsContainer>
-        <CroatianFlagImageContainer>
-          <FlagImage src="/images/cro-flag.png" alt="hr-img" />
+      {Object.keys(lngs).map((lng) => (
+        <FlagImage
+          key={lng}
+          // style={{
+          //   fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
+          // }}
+          type="submit"
+          src={`/images/${lng}-flag.png`}
+          alt={`${lng.nativeName}-img`}
+          onClick={() => i18n.changeLanguage(lng)}
+        />
+      ))}
+      {/* <CroatianFlagImageContainer>
+          <FlagImage onClick={() => i18n.changeLanguage(lngs.hr)} src="/images/cro-flag.png" alt="hr-img" />
         </CroatianFlagImageContainer>
         <EnglishFlagImageContainer>
-          <FlagImage src="/images/eng-flag.png" alt="eng-img" />
-        </EnglishFlagImageContainer>
-      </LanguageOptionsContainer>
-  )
-}
+          <FlagImage onClick={() => i18n.changeLanguage(lngs.en)} src="/images/eng-flag.png" alt="eng-img" />
+        </EnglishFlagImageContainer> */}
+    </LanguageOptionsContainer>
+  );
+};
 
-export default LanguageOptions
-
+export default LanguageOptions;
 
 const LanguageOptionsContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 90px;
 
   ${({ theme }) => `
     margin-right: ${theme.spacing.larger};

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const TitleImage = ({ textPartOne, textPartTwo, imageSrc }) => {
   const [isScrolling, setIsScrolling] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     changeOpacity();
@@ -40,7 +42,7 @@ const TitleImage = ({ textPartOne, textPartTwo, imageSrc }) => {
 
         <BookNowContainer>
           <BookNowLink to="/wines">
-            <BookNowHomeBtn>Book now</BookNowHomeBtn>
+            <BookNowHomeBtn>{t("bookBtn")}</BookNowHomeBtn>
           </BookNowLink>
         </BookNowContainer>
       </ImageContainer>

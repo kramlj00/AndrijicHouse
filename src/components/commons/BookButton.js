@@ -1,10 +1,13 @@
 import React from 'react'
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const BookButton = () => {
+  const { t } = useTranslation();
+
   return (
     <BookNowBtn>
-        Book now
+       {t("bookBtn")}
     </BookNowBtn>
   )
 }

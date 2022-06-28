@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation();
+
   const footerItems = [
-    { label: "Rooms", path: "/rooms" },
-    { label: "Exterior", path: "/exterior" },
-    { label: "Book now", path: "/"  },
+    { label: t("navLinks.link1"), path: "/rooms" },
+    { label: t("navLinks.link2"), path: "/exterior" },
+    { label: t("bookBtn"), path: "/" },
   ];
 
   return (
@@ -19,7 +22,7 @@ function Footer() {
       <FooterItemsContainer>
         <ItemContainer>
           <FooterLink to="/contact_us">
-            <FooterItemTitle>Contact us</FooterItemTitle>
+            <FooterItemTitle>{t("contactUs")}</FooterItemTitle>
           </FooterLink>
           <FooterItemSubtitle>andrijichouse@gmail.com</FooterItemSubtitle>
           <FooterItemSubtitle>+385 098 181 6135</FooterItemSubtitle>
@@ -34,7 +37,7 @@ function Footer() {
         ))}
       </FooterItemsContainer>
       <WebsiteRightsContainer>
-        Andrijic House &copy; {new Date().getFullYear()} All rights reserved.
+        Andrijic House &copy; {new Date().getFullYear()} {t("rightsFooter")}
       </WebsiteRightsContainer>
     </FooterContainer>
   );
