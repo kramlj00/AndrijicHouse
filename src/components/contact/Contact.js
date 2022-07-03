@@ -245,28 +245,49 @@ const ContentWrapper = styled.section`
 
   ${({ theme }) => `
     font-family: ${theme.fontFamily.main};
+
+    @media(max-width: ${theme.breakpoints.mobile}){
+      flex-direction: column;
+    }
   `}
 `;
 
-const ContactInfoContainer = styled.section``;
+const ContactInfoContainer = styled.section`
+ ${({ theme }) => `
+    @media(max-width: ${theme.breakpoints.mobile}){
+      margin-bottom: 40px;
+    } 
+  `}
+`;
 
 const ContactFormContainer = styled.section`
   display: flex;
   flex-direction: column;
   flex: 0.7;
+  
+  ${({ theme }) => `
+    @media(max-width: ${theme.breakpoints.tablet}){
+      flex: 0.9;
+    } 
+  `}
 `;
 
 const ContactInfoItem = styled.div`
   ${({ theme }) => `
-        font-size: ${theme.fontSize.mediumLarger};
-
-        @media(max-width: ${theme.breakpoints.mobile}){
-            font-size: ${theme.fontSize.medium};
-        } 
+      font-size: ${theme.fontSize.mediumLarger};
+      @media(max-width: ${theme.breakpoints.mobileTablet}){
+        font-size: ${theme.fontSize.medium};
+      }
    `}
 
   &:not(:last-child) {
     padding-bottom: 60px;
+
+    ${({ theme }) => `
+      @media(max-width: ${theme.breakpoints.mobile}){
+        padding-bottom: 40px;
+      } 
+   `}
   }
 `;
 
@@ -295,7 +316,7 @@ const Title = styled.h1`
 const Container = styled.div`
   padding: 20px 100px;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 40px;
   margin-bottom: 100px;
   height: fit-content;
   border-radius: 10px;
@@ -306,5 +327,9 @@ const Container = styled.div`
 
   ${({ theme }) => `
     background-color: ${theme.color.main.white};
+
+    @media(max-width: ${theme.breakpoints.tablet}){
+      padding: 20px 40px;
+    }
   `}
 `;
