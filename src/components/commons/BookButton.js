@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
@@ -6,21 +6,29 @@ const BookButton = () => {
   const { t } = useTranslation();
 
   return (
-    <BookNowBtn>
-       {t("bookBtn")}
-    </BookNowBtn>
-  )
-}
+    <BookNowLink
+      href="https://www.booking.com/hotel/hr/apartment-zaglav-12208a.hr.html?aid=304142&label=gen173nr-1DCAEoggI46AdIM1gEaGWIAQGYARC4ARfIAQzYAQPoAQGIAgGoAgO4ApzdhZYGwAIB0gIkYjkwMjdjZjMtN2QwNC00M2YzLWIxYzctYTJiM2IxNTg3ZWY52AIE4AIB&sid=9ea2f99d2546ae5288cab2ad92918067&atlas_src=sr_iw_btn;dest_id=2017;dest_type=region;dist=0;group_adults=2;group_children=0;no_rooms=1;room1=A%2CA;sb_price_type=total;type=total;ucfs=1&#availability_target"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <BookNowBtn>{t("bookBtn")}</BookNowBtn>
+    </BookNowLink>
+  );
+};
 
 export default BookButton;
 
-const BookNowBtn = styled.button`
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    cursor: pointer;
+const BookNowLink = styled.a`
+  text-decoration: none;
+`
 
-    ${({ theme }) => `
+const BookNowBtn = styled.button`
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  ${({ theme }) => `
         padding: ${theme.spacing.small} ${theme.spacing.large};
         background-color: ${theme.color.main.gold};
         color: ${theme.color.main.white};

@@ -12,6 +12,7 @@ const HomePage = () => {
         textPartOne={t("imageTitle.homeImage.partOne")}
         textPartTwo={t("imageTitle.homeImage.partTwo")}
         imageSrc="/images/home-image.png"
+        moveToLeft
       />
       <HomeCard />
     </>

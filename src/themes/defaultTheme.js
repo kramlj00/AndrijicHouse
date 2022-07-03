@@ -30,6 +30,7 @@ export const theme = {
     mobileTablet: "750px",
     tablet: "1000px",
     desktop: "1300px",
+    desktopLarger: "1500px",
   },
   fontSize: {
     small: "0.5rem",

@@ -39,9 +39,7 @@ const Navbar = ({ toggle }) => {
             {navLink.label}
           </NavLink>
         ))}
-        <NavLink to="/rooms">
-          <BookButton />
-        </NavLink>
+        <BookButton />
       </NavOptionsContainer>
 
       {isDesktopScreen && <LanguageOptions />}

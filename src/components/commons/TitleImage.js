@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const TitleImage = ({ textPartOne, textPartTwo, imageSrc }) => {
+const TitleImage = ({ textPartOne, textPartTwo, imageSrc, moveToLeft }) => {
   const [isScrolling, setIsScrolling] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     changeOpacity();
@@ -26,12 +25,11 @@ const TitleImage = ({ textPartOne, textPartTwo, imageSrc }) => {
 
   return (
     <HomeContainer>
-      <ImageContainer>
-        <Image
-          src={imageSrc}
-          alt="title-image"
-          isActive={isScrolling}
-        />
+      <ImageContainer
+        isCroatian={i18n.language === "hr"}
+        moveToLeft={moveToLeft}
+      >
+        <Image src={imageSrc} alt="title-image" isActive={isScrolling} />
         <TitleWrapper>
           <Saying>
             {textPartOne}
@@ -41,7 +39,11 @@ const TitleImage = ({ textPartOne, textPartTwo, imageSrc }) => {
         </TitleWrapper>
 
         <BookNowContainer>
-          <BookNowLink to="/wines">
+          <BookNowLink
+            href="https://www.booking.com/hotel/hr/apartment-zaglav-12208a.hr.html?aid=304142&label=gen173nr-1DCAEoggI46AdIM1gEaGWIAQGYARC4ARfIAQzYAQPoAQGIAgGoAgO4ApzdhZYGwAIB0gIkYjkwMjdjZjMtN2QwNC00M2YzLWIxYzctYTJiM2IxNTg3ZWY52AIE4AIB&sid=9ea2f99d2546ae5288cab2ad92918067&atlas_src=sr_iw_btn;dest_id=2017;dest_type=region;dist=0;group_adults=2;group_children=0;no_rooms=1;room1=A%2CA;sb_price_type=total;type=total;ucfs=1&#availability_target"
+            target="_blank"
+            rel="noreferrer"
+          >
             <BookNowHomeBtn>{t("bookBtn")}</BookNowHomeBtn>
           </BookNowLink>
         </BookNowContainer>
@@ -53,15 +55,9 @@ const TitleImage = ({ textPartOne, textPartTwo, imageSrc }) => {
 export default TitleImage;
 
 const jumpAnimation = keyframes`
-0% { transform: translate(-50%, -50%); }
-50% { transform: translate(-50%, -65%); }
-
-/* 55% { transform: translate(-50%, -60%) rotate(5deg); }
-60% { transform: translate(-50%, -60%) rotate(-5deg); }
-65% { transform: translate(-50%, -60%) rotate(5deg); }
-60% { transform: translate(-50%, -60%) rotate(-5deg); } */
-
-100% { transform: translate(-50%, -50%); }
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, -65%); }
+  100% { transform: translate(-50%, -50%); }
 `;
 
 const HomeContainer = styled.div`
@@ -71,7 +67,7 @@ const HomeContainer = styled.div`
 
 const TitleWrapper = styled.div``;
 
-const BookNowLink = styled(Link)`
+const BookNowLink = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;
@@ -123,13 +119,9 @@ const Image = styled.img`
   width: 100vw;
   object-fit: cover;
 
-  ${({ theme, isActive }) => `
+  ${({ isActive }) => `
     -webkit-filter: ${isActive && "blur(3px)"};
     transition: ${isActive && "-webkit-filter 1.5s linear"};
-
-    @media(max-width: ${theme.breakpoints.tablet}){
-        object-position: -40px 0;
-    } 
 `}
 `;
 
@@ -143,13 +135,17 @@ const ImageContainer = styled.div`
     background: transparent;
     position: absolute;
     top: 70%;
-    left: 80%;
     transform: translateX(-50%) translateY(-50%);
     text-align: center;
 
-    ${({ theme }) => `
+    ${({ theme, isCroatian, moveToLeft }) => `
       color: ${theme.color.main.white};
+      left: ${isCroatian && moveToLeft ? "73%" : "78%"};
       
+      @media(max-width: ${theme.breakpoints.desktopLarger}){
+        left: ${isCroatian && moveToLeft && "70%"};
+        top: 70%;
+      }
       @media(max-width: ${theme.breakpoints.desktop}){
         left: 50%;
         top: 55%;

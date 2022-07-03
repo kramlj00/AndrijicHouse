@@ -9,7 +9,6 @@ function Footer() {
   const footerItems = [
     { label: t("navLinks.link1"), path: "/rooms" },
     { label: t("navLinks.link2"), path: "/exterior" },
-    { label: t("bookBtn"), path: "/" },
   ];
 
   return (
@@ -35,6 +34,15 @@ function Footer() {
             </FooterLink>
           </ItemContainer>
         ))}
+        <ItemContainer>
+          <BookNowFooterLink
+            href="https://www.booking.com/hotel/hr/apartment-zaglav-12208a.hr.html?aid=304142&label=gen173nr-1DCAEoggI46AdIM1gEaGWIAQGYARC4ARfIAQzYAQPoAQGIAgGoAgO4ApzdhZYGwAIB0gIkYjkwMjdjZjMtN2QwNC00M2YzLWIxYzctYTJiM2IxNTg3ZWY52AIE4AIB&sid=9ea2f99d2546ae5288cab2ad92918067&atlas_src=sr_iw_btn;dest_id=2017;dest_type=region;dist=0;group_adults=2;group_children=0;no_rooms=1;room1=A%2CA;sb_price_type=total;type=total;ucfs=1&#availability_target"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FooterItemTitle>{t("bookBtn")}</FooterItemTitle>
+          </BookNowFooterLink>
+        </ItemContainer>
       </FooterItemsContainer>
       <WebsiteRightsContainer>
         Andrijic House &copy; {new Date().getFullYear()} {t("rightsFooter")}
@@ -48,7 +56,7 @@ export default Footer;
 const FooterContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 320px;
   justify-content: space-between;
   margin-top: 35px;
 
@@ -56,7 +64,7 @@ const FooterContainer = styled.div`
     background-color: ${theme.color.main.darkGrey};
 
     @media(max-width: ${theme.breakpoints.mobile}){
-      height: 320px;
+      height: 350px;
     }
   `}
 `;
@@ -166,6 +174,11 @@ const FooterItemSubtitle = styled.span`
 `;
 
 const FooterLink = styled(Link)`
+  text-decoration: none;
+  cursor: pointer;
+`;
+
+const BookNowFooterLink = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;

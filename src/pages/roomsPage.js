@@ -24,6 +24,7 @@ const RoomsPage = () => {
         textPartOne={t("imageTitle.roomsImage.partOne")}
         textPartTwo={t("imageTitle.roomsImage.partTwo")}
         imageSrc="/images/room-image.png"
+        moveToLeft
       />
       <Images imageList={roomsImages}/>
     </>
