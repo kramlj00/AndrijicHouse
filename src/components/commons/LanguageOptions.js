@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const LanguageOptions = () => {
   const { i18n } = useTranslation();
@@ -14,21 +14,12 @@ const LanguageOptions = () => {
       {Object.keys(lngs).map((lng) => (
         <FlagImage
           key={lng}
-          // style={{
-          //   fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
-          // }}
           type="submit"
           src={`/images/${lng}-flag.png`}
           alt={`${lng.nativeName}-img`}
           onClick={() => i18n.changeLanguage(lng)}
         />
       ))}
-      {/* <CroatianFlagImageContainer>
-          <FlagImage onClick={() => i18n.changeLanguage(lngs.hr)} src="/images/cro-flag.png" alt="hr-img" />
-        </CroatianFlagImageContainer>
-        <EnglishFlagImageContainer>
-          <FlagImage onClick={() => i18n.changeLanguage(lngs.en)} src="/images/eng-flag.png" alt="eng-img" />
-        </EnglishFlagImageContainer> */}
     </LanguageOptionsContainer>
   );
 };
@@ -47,12 +38,6 @@ const LanguageOptionsContainer = styled.div`
         margin-right: 0;
     }
   `}
-`;
-
-const CroatianFlagImageContainer = styled.div``;
-
-const EnglishFlagImageContainer = styled.div`
-  padding-left: 10px;
 `;
 
 const FlagImage = styled.img`

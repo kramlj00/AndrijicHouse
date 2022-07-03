@@ -1,35 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { send } from "emailjs-com";
 
 const Contact = () => {
   const { t } = useTranslation();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [senderName, setSenderName] = useState("");
+  const [senderEmail, setSenderEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [phoneNo, setPhoneNo] = useState("");
+  const [isSenderNameValid, setIsSenderNameValid] = useState(true);
+  const [isSenderEmailValid, setIsSenderEmailValid] = useState(true);
+  const [isEmailSent, setIsEmailSent] = useState(false);
 
-  const [isNameValid, setIsNameValid] = useState(true);
-  const [isEmailValid, setIsEmailValid] = useState(true);
+  useEffect(() => {
+    if (isEmailSent) {
+      setSenderName("");
+      setSenderEmail("");
+      setMessage("");
+    }
+  }, [isEmailSent]);
 
-  const handleNameChange = (value, setValue, setIsValueValid) => {
+  const handlesenderNameChange = (value, setValue, setIsValueValid) => {
     if (/^[a-z\u0161\u0111\u010D\u0107\u017E\u00EB\u002D ]*$/gi.test(value)) {
       setValue(value);
     }
-    value.length < 3 ? setIsValueValid(false) : setIsValueValid(true);
+    !value.length || value.length < 3
+      ? setIsValueValid(false)
+      : setIsValueValid(true);
   };
 
   const handleEmailChange = (value) => {
-    setEmail(value);
+    setSenderEmail(value);
     /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       value
     )
-      ? setIsEmailValid(true)
-      : setIsEmailValid(false);
+      ? setIsSenderEmailValid(true)
+      : setIsSenderEmailValid(false);
   };
 
-  const handleEmailSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
+
+    if (
+      isSenderNameValid &&
+      senderName.length &&
+      isSenderEmailValid &&
+      senderEmail.length &&
+      message.length > 10
+    )
+      send(
+        "service_dtvv20h",
+        "template_3jkz6se",
+        { senderName, senderEmail, message },
+        "vwCk9r14kG-CqvCCc"
+      )
+        .then((res) => {
+          setIsEmailSent(true);
+          console.log("Message sent successfully", res.status, res.text);
+        })
+        .catch((err) => {
+          setIsEmailSent(false);
+          console.log("Failed", err);
+        });
   };
 
   return (
@@ -62,52 +94,61 @@ const Contact = () => {
         </ContactInfoContainer>
         <ContactFormContainer>
           <SendEmailMsg>{t("contactPage.sendEmailMsg")}</SendEmailMsg>
-          <Form>
+          <Form onSubmit={sendEmail}>
             <Input
               type="text"
-              value={name}
+              value={senderName}
               placeholder={t("contactPage.name")}
               required
               onChange={(e) =>
-                handleNameChange(e.target.value, setName, setIsNameValid)
+                handlesenderNameChange(
+                  e.target.value,
+                  setSenderName,
+                  setIsSenderNameValid
+                )
               }
             />
             <ErrorMessage
-              visibility={!isNameValid && name.length ? "visible" : "hidden"}
+              visibility={
+                !isSenderNameValid && senderName.length ? "visible" : "hidden"
+              }
             >
               * Ime mora imati barem 3 slova
             </ErrorMessage>
             <Input
               type="text"
-              value={email}
+              value={senderEmail}
               placeholder={t("contactPage.emailAdr")}
               required
               onChange={(e) =>
-                handleEmailChange(e.target.value, setEmail, setIsEmailValid)
+                handleEmailChange(
+                  e.target.value,
+                  setSenderEmail,
+                  setIsSenderEmailValid
+                )
               }
             />
             <ErrorMessage
-              visibility={!isEmailValid && email.length ? "visible" : "hidden"}
+              visibility={
+                !isSenderEmailValid && senderEmail.length ? "visible" : "hidden"
+              }
             >
               * Krivi format email-a
             </ErrorMessage>
-            <Input type="text" placeholder={t("contactPage.phoneNo")} required onChange={(e) => {
-                setPhoneNo(e.target.value);
-              }}/>
             <EmailMessage
               type="text"
               cols="60"
               rows="8"
               id="description"
               maxLength={3000}
-            //   minLength={10}
+              //   minLength={10}
               placeholder={t("contactPage.msg")}
               value={message}
               onChange={(e) => {
                 setMessage(e.target.value);
               }}
             />
-            <SendEmailBtn onClick={handleEmailSubmit}>
+            <SendEmailBtn type="submit">
               {t("contactPage.sendBtn")}
             </SendEmailBtn>
           </Form>
@@ -141,6 +182,7 @@ const SendEmailBtn = styled.button`
   letter-spacing: 1px;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 15px;
 
   ${({ theme }) => `
         padding: ${theme.spacing.small} ${theme.spacing.large};
@@ -169,7 +211,6 @@ const EmailMessage = styled.textarea`
   margin: 8px 0;
   width: 100%;
   resize: none;
-  margin-top: 20px;
   ${({ theme }) => `
     background-color: ${theme.color.secondary.lightGrey};
     font-family: ${theme.fontFamily.main};
@@ -200,6 +241,7 @@ const ContentWrapper = styled.section`
   justify-content: space-between;
   align-items: center;
   padding-top: 20px;
+  margin-bottom: 20px;
 
   ${({ theme }) => `
     font-family: ${theme.fontFamily.main};
@@ -253,8 +295,9 @@ const Title = styled.h1`
 const Container = styled.div`
   padding: 20px 100px;
   margin: auto;
-  margin-top: 26px;
+  margin-top: 50px;
   margin-bottom: 100px;
+  height: fit-content;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
