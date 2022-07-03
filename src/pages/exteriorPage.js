@@ -7,7 +7,7 @@ const ExteriorPage = () => {
   const { t } = useTranslation();
 
   const exteriorImages = [
-    { src: "/images/exterior-image.png", caption: "Image 1" },
+    { src: "/images/exterior-image.webp", caption: "Image 1" },
     { src: "/images/exterior2-image.png", caption: "Image 2" },
     { src: "/images/exterior3-image.png", caption: "Image 3" },
     { src: "/images/exterior4-image.png", caption: "Image 4" },
@@ -30,7 +30,7 @@ const ExteriorPage = () => {
       <TitleImage
         textPartOne={t("imageTitle.exteriorImage.partOne")}
         textPartTwo={t("imageTitle.exteriorImage.partTwo")}
-        imageSrc="/images/exterior-image.png"
+        imageSrc="/images/exterior-image.webp"
       />
       <Images imageList={exteriorImages} />
     </>
