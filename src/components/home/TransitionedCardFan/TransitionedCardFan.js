@@ -5,17 +5,17 @@ function TransitionedCardFan() {
     <div>
       <div className="cardfan">
         <img
-          src="/images/room3-image.jpg"
+          src="/images/room17-image.jpg"
           alt="cardfan_pic3"
           id="wine3"
         />
         <img
-          src="/images/exterior9-image.png"
+          src="/images/exterior15-image.jpg"
           alt="cardfan_pic2"
           id="wine2"
         />
         <img
-          src="/images/exterior5-image.png"
+          src="/images/exterior18-image.jpg"
           alt="cardfan_pic1"
           id="wine1"
         />
