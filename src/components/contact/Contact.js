@@ -186,10 +186,10 @@ const SendEmailBtn = styled.button`
 
   ${({ theme }) => `
         padding: ${theme.spacing.small} ${theme.spacing.large};
-        background-color: ${theme.color.secondary.seeBlue};
+        background-color: ${theme.color.secondary.seaBlue};
         color: ${theme.color.main.white};
         font-size: ${theme.fontSize.medium};
-        border: 1px solid ${theme.color.secondary.seeBlue};
+        border: 1px solid ${theme.color.secondary.seaBlue};
 
         @media(max-width: ${theme.breakpoints.mobile}){
             padding: ${theme.spacing.small} ${theme.spacing.medium};

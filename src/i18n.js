@@ -37,7 +37,7 @@ i18n
             },
             exteriorImage: {
               partOne: "Luxury by the",
-              partTwo: "see"
+              partTwo: "sea"
             },
           },
           rightsFooter: "All rights reserved.",
