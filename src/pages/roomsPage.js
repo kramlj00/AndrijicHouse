@@ -8,7 +8,6 @@ const RoomsPage = () => {
   const { t } = useTranslation();
 
   const roomsImages = [
-    {src: "/images/room-image.webp", caption: "Image 1"},
     {src: "/images/room2-image.jpg", caption: "Image 2"},
     {src: "/images/room3-image.jpg", caption: "Image 3"},
     {src: "/images/room4-image.jpg", caption: "Image 4"},
@@ -16,6 +15,16 @@ const RoomsPage = () => {
     {src: "/images/room6-image.jpg", caption: "Image 6"},
     {src: "/images/room7-image.jpg", caption: "Image 7"},
     {src: "/images/room8-image.jpg", caption: "Image 8"},
+    {src: "/images/room9-image.jpg", caption: "Image 9"},
+    {src: "/images/room10-image.jpg", caption: "Image 10"},
+    {src: "/images/room11-image.jpg", caption: "Image 11"},
+    {src: "/images/room12-image.jpg", caption: "Image 12"},
+    {src: "/images/room13-image.jpg", caption: "Image 13"},
+    {src: "/images/room14-image.jpg", caption: "Image 14"},
+    {src: "/images/room15-image.jpg", caption: "Image 15"},
+    {src: "/images/room16-image.jpg", caption: "Image 16"},
+    {src: "/images/room17-image.jpg", caption: "Image 17"},
+    {src: "/images/room18-image.jpg", caption: "Image 18"},
   ];
   
   return (
@@ -23,7 +32,7 @@ const RoomsPage = () => {
       <TitleImage
         textPartOne={t("imageTitle.roomsImage.partOne")}
         textPartTwo={t("imageTitle.roomsImage.partTwo")}
-        imageSrc="/images/room-image.webp"
+        imageSrc="/images/room-image.jpg"
         moveToLeft
       />
       <Images imageList={roomsImages}/>
