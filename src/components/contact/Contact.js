@@ -69,8 +69,8 @@ const Contact = () => {
 
   return (
     <>
-      {showErrorMessage && <Notification message="Error sending email!" type="error" />}
-      {showSuccessMessage && <Notification message="Email sent!" type="success" />}
+      {showErrorMessage && <Notification message={t("contactPage.emailSendError")} type="error" />}
+      {showSuccessMessage && <Notification message={t("contactPage.emailSendSuccess")} type="success" />}
       <Container>
         <Title>{t("contactUs")}</Title>
         <ContentWrapper>
@@ -119,7 +119,7 @@ const Contact = () => {
                   !isSenderNameValid && senderName.length ? "visible" : "hidden"
                 }
               >
-                * Ime mora imati barem 3 slova
+                * {t("contactPage.nameErrorMsg")}
               </ErrorMessage>
               <Input
                 type="text"
@@ -141,7 +141,7 @@ const Contact = () => {
                     : "hidden"
                 }
               >
-                * Krivi format email-a
+                * {t("contactPage.emailErrorMsg")}
               </ErrorMessage>
               <EmailMessage
                 type="text"

@@ -49,7 +49,11 @@ i18n
             sendEmailMsg: "Send us an email:",
             name: "Name",
             msg: "Message",
-            sendBtn: "Send"
+            sendBtn: "Send",
+            emailSendError: "Error sending email!",
+            emailSendSuccess: "Email sent successfully!",
+            nameErrorMsg: "Name must have at least 3 letters",
+            emailErrorMsg: "Wrong email format",
           }
         },
       },
@@ -90,7 +94,11 @@ i18n
             sendEmailMsg: "Pošaljite nam email:",
             name: "Ime i prezime",
             msg: "Poruka",
-            sendBtn: "Pošalji"
+            sendBtn: "Pošalji",
+            nameErrorMsg: "Ime mora imati barem 3 slova",
+            emailErrorMsg: "Krivi email format",
+            emailSendError: "Greška prilikom slanja emaila!",
+            emailSendSuccess: "Email uspješno poslan!",
           }
         },
       },
