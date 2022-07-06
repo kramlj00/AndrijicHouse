@@ -13,6 +13,8 @@ export const theme = {
       seaBlue: "#39677F",
       lightBlue: "#659dba",
       wineRed: "#b8001f",
+      green: "#32a852",
+      roseRed: "#e83946"
     },
   },
   spacing: {

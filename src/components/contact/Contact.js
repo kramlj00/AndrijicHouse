@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { send } from "emailjs-com";
+import Notification from "../commons/Notification";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -11,6 +12,8 @@ const Contact = () => {
   const [isSenderNameValid, setIsSenderNameValid] = useState(true);
   const [isSenderEmailValid, setIsSenderEmailValid] = useState(true);
   const [isEmailSent, setIsEmailSent] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
     if (isEmailSent) {
@@ -56,105 +59,111 @@ const Contact = () => {
       )
         .then((res) => {
           setIsEmailSent(true);
-          console.log("Message sent successfully", res.status, res.text);
+          setShowSuccessMessage(true);
         })
         .catch((err) => {
           setIsEmailSent(false);
-          console.log("Failed", err);
+          setShowErrorMessage(true);
         });
   };
 
   return (
-    <Container>
-      <Title>{t("contactUs")}</Title>
-      <ContentWrapper>
-        <ContactInfoContainer>
-          <ContactInfoItem>
-            <ContactInfoSubitemOne>
-              {t("contactPage.emailAdr")}
-            </ContactInfoSubitemOne>
-            <ContactInfoSubitemTwo>
-              tonci.andrijic@gmail.com
-            </ContactInfoSubitemTwo>
-          </ContactInfoItem>
-          <ContactInfoItem>
-            <ContactInfoSubitemOne>
-              {t("contactPage.phoneNo")} (Tonči Andrijić)
-            </ContactInfoSubitemOne>
-            <ContactInfoSubitemTwo>+385 98 181 6135</ContactInfoSubitemTwo>
-          </ContactInfoItem>
-          <ContactInfoItem>
-            <ContactInfoSubitemOne>
-              {t("contactPage.address")}
-            </ContactInfoSubitemOne>
-            <ContactInfoSubitemTwo>
-              Zaglav 27, 20271 Blato Croatia
-            </ContactInfoSubitemTwo>
-          </ContactInfoItem>
-        </ContactInfoContainer>
-        <ContactFormContainer>
-          <SendEmailMsg>{t("contactPage.sendEmailMsg")}</SendEmailMsg>
-          <Form onSubmit={sendEmail}>
-            <Input
-              type="text"
-              value={senderName}
-              placeholder={t("contactPage.name")}
-              required
-              onChange={(e) =>
-                handlesenderNameChange(
-                  e.target.value,
-                  setSenderName,
-                  setIsSenderNameValid
-                )
-              }
-            />
-            <ErrorMessage
-              visibility={
-                !isSenderNameValid && senderName.length ? "visible" : "hidden"
-              }
-            >
-              * Ime mora imati barem 3 slova
-            </ErrorMessage>
-            <Input
-              type="text"
-              value={senderEmail}
-              placeholder={t("contactPage.emailAdr")}
-              required
-              onChange={(e) =>
-                handleEmailChange(
-                  e.target.value,
-                  setSenderEmail,
-                  setIsSenderEmailValid
-                )
-              }
-            />
-            <ErrorMessage
-              visibility={
-                !isSenderEmailValid && senderEmail.length ? "visible" : "hidden"
-              }
-            >
-              * Krivi format email-a
-            </ErrorMessage>
-            <EmailMessage
-              type="text"
-              cols="60"
-              rows="8"
-              id="description"
-              maxLength={3000}
-              //   minLength={10}
-              placeholder={t("contactPage.msg")}
-              value={message}
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
-            />
-            <SendEmailBtn type="submit">
-              {t("contactPage.sendBtn")}
-            </SendEmailBtn>
-          </Form>
-        </ContactFormContainer>
-      </ContentWrapper>
-    </Container>
+    <>
+      {showErrorMessage && <Notification message="Error sending email!" type="error" />}
+      {showSuccessMessage && <Notification message="Email sent!" type="success" />}
+      <Container>
+        <Title>{t("contactUs")}</Title>
+        <ContentWrapper>
+          <ContactInfoContainer>
+            <ContactInfoItem>
+              <ContactInfoSubitemOne>
+                {t("contactPage.emailAdr")}
+              </ContactInfoSubitemOne>
+              <ContactInfoSubitemTwo>
+                tonci.andrijic@gmail.com
+              </ContactInfoSubitemTwo>
+            </ContactInfoItem>
+            <ContactInfoItem>
+              <ContactInfoSubitemOne>
+                {t("contactPage.phoneNo")} (Tonči Andrijić)
+              </ContactInfoSubitemOne>
+              <ContactInfoSubitemTwo>+385 98 181 6135</ContactInfoSubitemTwo>
+            </ContactInfoItem>
+            <ContactInfoItem>
+              <ContactInfoSubitemOne>
+                {t("contactPage.address")}
+              </ContactInfoSubitemOne>
+              <ContactInfoSubitemTwo>
+                Zaglav 27, 20271 Blato Croatia
+              </ContactInfoSubitemTwo>
+            </ContactInfoItem>
+          </ContactInfoContainer>
+          <ContactFormContainer>
+            <SendEmailMsg>{t("contactPage.sendEmailMsg")}</SendEmailMsg>
+            <Form onSubmit={sendEmail}>
+              <Input
+                type="text"
+                value={senderName}
+                placeholder={t("contactPage.name")}
+                required
+                onChange={(e) =>
+                  handlesenderNameChange(
+                    e.target.value,
+                    setSenderName,
+                    setIsSenderNameValid
+                  )
+                }
+              />
+              <ErrorMessage
+                visibility={
+                  !isSenderNameValid && senderName.length ? "visible" : "hidden"
+                }
+              >
+                * Ime mora imati barem 3 slova
+              </ErrorMessage>
+              <Input
+                type="text"
+                value={senderEmail}
+                placeholder={t("contactPage.emailAdr")}
+                required
+                onChange={(e) =>
+                  handleEmailChange(
+                    e.target.value,
+                    setSenderEmail,
+                    setIsSenderEmailValid
+                  )
+                }
+              />
+              <ErrorMessage
+                visibility={
+                  !isSenderEmailValid && senderEmail.length
+                    ? "visible"
+                    : "hidden"
+                }
+              >
+                * Krivi format email-a
+              </ErrorMessage>
+              <EmailMessage
+                type="text"
+                cols="60"
+                rows="8"
+                id="description"
+                maxLength={3000}
+                //   minLength={10}
+                placeholder={t("contactPage.msg")}
+                value={message}
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                }}
+              />
+              <SendEmailBtn type="submit">
+                {t("contactPage.sendBtn")}
+              </SendEmailBtn>
+            </Form>
+          </ContactFormContainer>
+        </ContentWrapper>
+      </Container>
+    </>
   );
 };
 
@@ -253,7 +262,7 @@ const ContentWrapper = styled.section`
 `;
 
 const ContactInfoContainer = styled.section`
- ${({ theme }) => `
+  ${({ theme }) => `
     @media(max-width: ${theme.breakpoints.mobile}){
       margin-bottom: 40px;
     } 
@@ -264,7 +273,7 @@ const ContactFormContainer = styled.section`
   display: flex;
   flex-direction: column;
   flex: 0.7;
-  
+
   ${({ theme }) => `
     @media(max-width: ${theme.breakpoints.tablet}){
       flex: 0.9;
