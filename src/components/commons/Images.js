@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import LightBox from "react-awesome-lightbox";
+import { Slide } from "react-awesome-reveal";
 
 const Images = ({ imageList }) => {
   const [showLight, setShowLight] = useState(null);
@@ -16,6 +17,7 @@ const Images = ({ imageList }) => {
   };
   return (
     <>
+    <Slide triggerOnce direction="up">
       <ImagesContainer>
       {imageList.map((image, index) => (
         <Image
@@ -25,6 +27,7 @@ const Images = ({ imageList }) => {
         />
       ))}
       </ImagesContainer>
+      </Slide>
       {showLight && (
         <LightBox
           images={imageList.map((img) => ({ url: img.src, title: img.caption }))}

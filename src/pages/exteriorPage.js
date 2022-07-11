@@ -2,6 +2,7 @@ import React from "react";
 import Images from "../components/commons/Images";
 import TitleImage from "../components/commons/TitleImage";
 import { useTranslation } from "react-i18next";
+import { Fade } from "react-awesome-reveal";
 
 const ExteriorPage = () => {
   const { t } = useTranslation();
@@ -41,11 +42,13 @@ const ExteriorPage = () => {
 
   return (
     <>
-      <TitleImage
-        textPartOne={t("imageTitle.exteriorImage.partOne")}
-        textPartTwo={t("imageTitle.exteriorImage.partTwo")}
-        imageSrc="/images/exterior-image.jpg"
-      />
+      <Fade triggerOnce>
+        <TitleImage
+          textPartOne={t("imageTitle.exteriorImage.partOne")}
+          textPartTwo={t("imageTitle.exteriorImage.partTwo")}
+          imageSrc="/images/exterior-image.jpg"
+        />
+      </Fade>
       <Images imageList={exteriorImages} />
     </>
   );
