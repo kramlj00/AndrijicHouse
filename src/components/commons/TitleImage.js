@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from "react-i18next";
+import { Fade } from "react-awesome-reveal";
 
 const TitleImage = ({ textPartOne, textPartTwo, imageSrc, moveToLeft }) => {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -31,21 +32,25 @@ const TitleImage = ({ textPartOne, textPartTwo, imageSrc, moveToLeft }) => {
       >
         <Image src={imageSrc} alt="title-image" isActive={isScrolling} />
         <TitleWrapper>
-          <Saying>
-            {textPartOne}
-            <br></br>
-            {textPartTwo}
-          </Saying>
+          <Fade triggerOnce={true} delay={600}>
+            <Saying>
+              {textPartOne}
+              <br></br>
+              {textPartTwo}
+            </Saying>
+          </Fade>
         </TitleWrapper>
 
         <BookNowContainer>
-          <BookNowLink
-            href="https://www.booking.com/hotel/hr/apartment-zaglav-12208a.hr.html?aid=304142&label=gen173nr-1DCAEoggI46AdIM1gEaGWIAQGYARC4ARfIAQzYAQPoAQGIAgGoAgO4ApzdhZYGwAIB0gIkYjkwMjdjZjMtN2QwNC00M2YzLWIxYzctYTJiM2IxNTg3ZWY52AIE4AIB&sid=9ea2f99d2546ae5288cab2ad92918067&atlas_src=sr_iw_btn;dest_id=2017;dest_type=region;dist=0;group_adults=2;group_children=0;no_rooms=1;room1=A%2CA;sb_price_type=total;type=total;ucfs=1&#availability_target"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <BookNowHomeBtn>{t("bookBtn")}</BookNowHomeBtn>
-          </BookNowLink>
+          <Fade triggerOnce={true} delay={700}>
+            <BookNowLink
+              href="https://www.booking.com/hotel/hr/apartment-zaglav-12208a.hr.html?aid=304142&label=gen173nr-1DCAEoggI46AdIM1gEaGWIAQGYARC4ARfIAQzYAQPoAQGIAgGoAgO4ApzdhZYGwAIB0gIkYjkwMjdjZjMtN2QwNC00M2YzLWIxYzctYTJiM2IxNTg3ZWY52AIE4AIB&sid=9ea2f99d2546ae5288cab2ad92918067&atlas_src=sr_iw_btn;dest_id=2017;dest_type=region;dist=0;group_adults=2;group_children=0;no_rooms=1;room1=A%2CA;sb_price_type=total;type=total;ucfs=1&#availability_target"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <BookNowHomeBtn>{t("bookBtn")}</BookNowHomeBtn>
+            </BookNowLink>
+          </Fade>
         </BookNowContainer>
       </ImageContainer>
     </HomeContainer>

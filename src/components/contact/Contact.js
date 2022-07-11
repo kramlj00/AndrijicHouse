@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { send } from "emailjs-com";
 import Notification from "../commons/Notification";
+import { Fade, Zoom } from "react-awesome-reveal";
 
 const Contact = () => {
   const { t } = useTranslation();
@@ -69,100 +70,113 @@ const Contact = () => {
 
   return (
     <>
-      {showErrorMessage && <Notification message={t("contactPage.emailSendError")} type="error" />}
-      {showSuccessMessage && <Notification message={t("contactPage.emailSendSuccess")} type="success" />}
-      <Container>
-        <Title>{t("contactUs")}</Title>
-        <ContentWrapper>
-          <ContactInfoContainer>
-            <ContactInfoItem>
-              <ContactInfoSubitemOne>
-                {t("contactPage.emailAdr")}
-              </ContactInfoSubitemOne>
-              <ContactInfoSubitemTwo>
-                tonci.andrijic@gmail.com
-              </ContactInfoSubitemTwo>
-            </ContactInfoItem>
-            <ContactInfoItem>
-              <ContactInfoSubitemOne>
-                {t("contactPage.phoneNo")} (Tonči Andrijić)
-              </ContactInfoSubitemOne>
-              <ContactInfoSubitemTwo>+385 98 181 6135</ContactInfoSubitemTwo>
-            </ContactInfoItem>
-            <ContactInfoItem>
-              <ContactInfoSubitemOne>
-                {t("contactPage.address")}
-              </ContactInfoSubitemOne>
-              <ContactInfoSubitemTwo>
-                Zaglav 27, 20271 Blato Croatia
-              </ContactInfoSubitemTwo>
-            </ContactInfoItem>
-          </ContactInfoContainer>
-          <ContactFormContainer>
-            <SendEmailMsg>{t("contactPage.sendEmailMsg")}</SendEmailMsg>
-            <Form onSubmit={sendEmail}>
-              <Input
-                type="text"
-                value={senderName}
-                placeholder={t("contactPage.name")}
-                required
-                onChange={(e) =>
-                  handlesenderNameChange(
-                    e.target.value,
-                    setSenderName,
-                    setIsSenderNameValid
-                  )
-                }
-              />
-              <ErrorMessage
-                visibility={
-                  !isSenderNameValid && senderName.length ? "visible" : "hidden"
-                }
-              >
-                * {t("contactPage.nameErrorMsg")}
-              </ErrorMessage>
-              <Input
-                type="text"
-                value={senderEmail}
-                placeholder={t("contactPage.emailAdr")}
-                required
-                onChange={(e) =>
-                  handleEmailChange(
-                    e.target.value,
-                    setSenderEmail,
-                    setIsSenderEmailValid
-                  )
-                }
-              />
-              <ErrorMessage
-                visibility={
-                  !isSenderEmailValid && senderEmail.length
-                    ? "visible"
-                    : "hidden"
-                }
-              >
-                * {t("contactPage.emailErrorMsg")}
-              </ErrorMessage>
-              <EmailMessage
-                type="text"
-                cols="60"
-                rows="8"
-                id="description"
-                maxLength={3000}
-                //   minLength={10}
-                placeholder={t("contactPage.msg")}
-                value={message}
-                onChange={(e) => {
-                  setMessage(e.target.value);
-                }}
-              />
-              <SendEmailBtn type="submit">
-                {t("contactPage.sendBtn")}
-              </SendEmailBtn>
-            </Form>
-          </ContactFormContainer>
-        </ContentWrapper>
-      </Container>
+      {showErrorMessage && (
+        <Notification message={t("contactPage.emailSendError")} type="error" />
+      )}
+      {showSuccessMessage && (
+        <Notification
+          message={t("contactPage.emailSendSuccess")}
+          type="success"
+        />
+      )}
+      <Fade triggerOnce>
+        <Container>
+          <Zoom triggerOnce delay={200}>
+            <Title>{t("contactUs")}</Title>
+          </Zoom>
+          <ContentWrapper>
+            <ContactInfoContainer>
+              <ContactInfoItem>
+                <ContactInfoSubitemOne>
+                  {t("contactPage.emailAdr")}
+                </ContactInfoSubitemOne>
+                <ContactInfoSubitemTwo>
+                  tonci.andrijic@gmail.com
+                </ContactInfoSubitemTwo>
+              </ContactInfoItem>
+              <ContactInfoItem>
+                <ContactInfoSubitemOne>
+                  {t("contactPage.phoneNo")} (Tonči Andrijić)
+                </ContactInfoSubitemOne>
+                <ContactInfoSubitemTwo>+385 98 181 6135</ContactInfoSubitemTwo>
+              </ContactInfoItem>
+              <ContactInfoItem>
+                <ContactInfoSubitemOne>
+                  {t("contactPage.address")}
+                </ContactInfoSubitemOne>
+                <ContactInfoSubitemTwo>
+                  Zaglav 27, 20271 Blato Croatia
+                </ContactInfoSubitemTwo>
+              </ContactInfoItem>
+            </ContactInfoContainer>
+            <ContactFormContainer>
+              <SendEmailMsg>{t("contactPage.sendEmailMsg")}</SendEmailMsg>
+              <Form onSubmit={sendEmail}>
+                <Input
+                  type="text"
+                  value={senderName}
+                  placeholder={t("contactPage.name")}
+                  required
+                  onChange={(e) =>
+                    handlesenderNameChange(
+                      e.target.value,
+                      setSenderName,
+                      setIsSenderNameValid
+                    )
+                  }
+                />
+                <ErrorMessage
+                  visibility={
+                    !isSenderNameValid && senderName.length
+                      ? "visible"
+                      : "hidden"
+                  }
+                >
+                  * {t("contactPage.nameErrorMsg")}
+                </ErrorMessage>
+                <Input
+                  type="text"
+                  value={senderEmail}
+                  placeholder={t("contactPage.emailAdr")}
+                  required
+                  onChange={(e) =>
+                    handleEmailChange(
+                      e.target.value,
+                      setSenderEmail,
+                      setIsSenderEmailValid
+                    )
+                  }
+                />
+                <ErrorMessage
+                  visibility={
+                    !isSenderEmailValid && senderEmail.length
+                      ? "visible"
+                      : "hidden"
+                  }
+                >
+                  * {t("contactPage.emailErrorMsg")}
+                </ErrorMessage>
+                <EmailMessage
+                  type="text"
+                  cols="60"
+                  rows="8"
+                  id="description"
+                  maxLength={3000}
+                  //   minLength={10}
+                  placeholder={t("contactPage.msg")}
+                  value={message}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                  }}
+                />
+                <SendEmailBtn type="submit">
+                  {t("contactPage.sendBtn")}
+                </SendEmailBtn>
+              </Form>
+            </ContactFormContainer>
+          </ContentWrapper>
+        </Container>
+      </Fade>
     </>
   );
 };

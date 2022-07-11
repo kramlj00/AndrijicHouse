@@ -2,7 +2,7 @@
   width: 50%;
   margin: 0 auto;
   position: relative;
-   margin-top: -100px;
+  margin-top: 30px;
 }
 
 .cardfan img {
@@ -38,6 +38,7 @@ img#wine2:hover {
   -webkit-filter: grayscale(0);
   filter: grayscale(0);
   filter: none;
+  z-index: 100;
 }
 img#wine1 {
   -webkit-filter: sepia(100%);
@@ -61,26 +62,44 @@ img#wine3:hover {
   -webkit-filter: blur(0px);
   filter: blur(0px);
   filter: none;
+  z-index: 100;
 }
 
 @media screen and (max-width: 1700px) {
   .cardfan {
     height: 200px;
     margin-bottom: -350px; 
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .cardfan {
+    margin-top: 60px;
   }
 }
 
 @media screen and (max-width: 1300px) {
   .cardfan {
     width: 70%;
-    margin-top: 50px;
-    height: 420px;
+    margin-top: 30px;
+    height: 380px;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .cardfan {
-    height: 250px;
+    width: 80%;
+    margin-top: 20px;
+    height: 230px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .cardfan {
+    width: 90%;
+    margin-top: 20px;
+    height: 200px;
   }
 }
 
@@ -88,13 +107,15 @@ img#wine3:hover {
   .cardfan {
     height: 120px;
     margin-top: 0px;
+    width: 85%;
   }
 }
 
 @media screen and (max-width: 480px) {
   .cardfan {
-    height: 100px;
-    margin-top: 10px;
+    height: 40px;
+    margin-top: 0px;
+    width: 70%;
   }
   .cardfan img {
     transform-origin: center 250px;
