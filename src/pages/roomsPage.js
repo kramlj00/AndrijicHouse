@@ -34,7 +34,7 @@ const RoomsPage = () => {
         <TitleImage
           textPartOne={t("imageTitle.roomsImage.partOne")}
           textPartTwo={t("imageTitle.roomsImage.partTwo")}
-          imageSrc="/images/room-image.jpg"
+          imageSrc="/images/room-image.webp"
           moveToLeft
         />
       </Fade>

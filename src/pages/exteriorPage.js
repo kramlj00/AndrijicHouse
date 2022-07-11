@@ -46,7 +46,7 @@ const ExteriorPage = () => {
         <TitleImage
           textPartOne={t("imageTitle.exteriorImage.partOne")}
           textPartTwo={t("imageTitle.exteriorImage.partTwo")}
-          imageSrc="/images/exterior-image.jpg"
+          imageSrc="/images/exterior-image.webp"
         />
       </Fade>
       <Images imageList={exteriorImages} />
