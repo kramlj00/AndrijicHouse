@@ -13,7 +13,7 @@ const HomePage = () => {
         <TitleImage
           textPartOne={t("imageTitle.homeImage.partOne")}
           textPartTwo={t("imageTitle.homeImage.partTwo")}
-          imageSrc="/images/home-image.webp"
+          imageSrc="/images/home-image.jpg"
           moveToLeft
         />
       </Fade>
