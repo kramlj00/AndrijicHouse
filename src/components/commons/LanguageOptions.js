@@ -42,5 +42,6 @@ const LanguageOptionsContainer = styled.div`
 
 const FlagImage = styled.img`
   width: 40px;
+  height: 23px;
   cursor: pointer;
 `;
