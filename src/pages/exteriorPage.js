@@ -3,6 +3,8 @@ import Images from "../components/commons/Images";
 import TitleImage from "../components/commons/TitleImage";
 import { useTranslation } from "react-i18next";
 import { Fade } from "react-awesome-reveal";
+import useMedia from 'use-media';
+import { theme } from "../themes/defaultTheme";
 
 const ExteriorPage = () => {
   const { t } = useTranslation();
@@ -39,6 +41,14 @@ const ExteriorPage = () => {
     { src: "/images/exterior30-image.jpg", caption: "Image 30" },
     { src: "/images/exterior31-image.jpg", caption: "Image 31" },
   ];
+  const isTabletScreen = useMedia({
+    minWidth: theme.breakpoints.mobile,
+    maxWidth: theme.breakpoints.tablet,
+  });
+  const isMobileScreen = useMedia({
+    maxWidth: theme.breakpoints.mobile,
+  });
+  const imageSrc = isTabletScreen ? "/images/tablet-exterior-image.jpg" : isMobileScreen ? "/images/mobile-exterior-image.jpg" : "/images/exterior-image.jpg";
 
   return (
     <>
@@ -46,7 +56,7 @@ const ExteriorPage = () => {
         <TitleImage
           textPartOne={t("imageTitle.exteriorImage.partOne")}
           textPartTwo={t("imageTitle.exteriorImage.partTwo")}
-          imageSrc="/images/exterior-image.jpg"
+          imageSrc={imageSrc}
         />
       </Fade>
       <Images imageList={exteriorImages} />

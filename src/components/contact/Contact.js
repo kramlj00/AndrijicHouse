@@ -58,11 +58,11 @@ const Contact = () => {
         { senderName, senderEmail, message },
         "vwCk9r14kG-CqvCCc"
       )
-        .then((res) => {
+        .then(() => {
           setIsEmailSent(true);
           setShowSuccessMessage(true);
         })
-        .catch((err) => {
+        .catch(() => {
           setIsEmailSent(false);
           setShowErrorMessage(true);
         });

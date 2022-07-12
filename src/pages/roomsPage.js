@@ -4,6 +4,8 @@ import TitleImage from "../components/commons/TitleImage";
 import "react-awesome-lightbox/build/style.css";
 import { useTranslation } from "react-i18next";
 import { Fade } from "react-awesome-reveal";
+import useMedia from 'use-media';
+import { theme } from "../themes/defaultTheme";
 
 const RoomsPage = () => {
   const { t } = useTranslation();
@@ -27,6 +29,14 @@ const RoomsPage = () => {
     { src: "/images/room17-image.jpg", caption: "Image 17" },
     { src: "/images/room18-image.jpg", caption: "Image 18" },
   ];
+  const isTabletScreen = useMedia({
+    minWidth: theme.breakpoints.mobile,
+    maxWidth: theme.breakpoints.tablet,
+  });
+  const isMobileScreen = useMedia({
+    maxWidth: theme.breakpoints.mobile,
+  });
+  const imageSrc = isTabletScreen ? "/images/tablet-room-image.jpg" : isMobileScreen ? "/images/mobile-room-image.jpg" : "/images/room-image.jpg";
 
   return (
     <>
@@ -34,7 +44,7 @@ const RoomsPage = () => {
         <TitleImage
           textPartOne={t("imageTitle.roomsImage.partOne")}
           textPartTwo={t("imageTitle.roomsImage.partTwo")}
-          imageSrc="/images/room-image.jpg"
+          imageSrc={imageSrc}
           moveToLeft
         />
       </Fade>
