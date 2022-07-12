@@ -15,6 +15,8 @@ const LanguageOptions = () => {
         <FlagImage
           key={lng}
           type="submit"
+          width="40px"
+          height="23px"
           src={`/images/${lng}-flag.png`}
           alt={`${lng.nativeName}-img`}
           onClick={() => i18n.changeLanguage(lng)}
@@ -41,6 +43,5 @@ const LanguageOptionsContainer = styled.div`
 `;
 
 const FlagImage = styled.img`
-  width: 40px;
   cursor: pointer;
 `;
