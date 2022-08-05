@@ -13,7 +13,7 @@ const HomePage = () => {
         <TitleImage
           textPartOne={t("imageTitle.homeImage.partOne")}
           textPartTwo={t("imageTitle.homeImage.partTwo")}
-          imageSrc="/images/home-image.webp"
+          imageSrc="https://res.cloudinary.com/kristina1950/image/upload/v1659702140/exterior/IMGP2512_ke9b5x.jpg"
           moveToLeft
         />
       </Fade>
